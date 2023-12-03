@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
     this.setCurrentUser();
+    
   }
 
 
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit {
   setCurrentUser(){
     const userString = localStorage.getItem('user');
     if(!userString) return;
-    let user: User = JSON.stringify(userString) as unknown as User;
+    let user: User = JSON.parse(userString) as unknown as User;
     this.accountService.setCurrentUser(user);
   }
   
